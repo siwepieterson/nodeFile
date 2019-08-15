@@ -1,0 +1,24 @@
+{
+  "name": "nodeproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "^3.4.0"
+  },
+  "scripts": {
+    
+    "test": "./node_modules/jasmine/bin/jasmine.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siwepieterson/nodeFile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siwepieterson/nodeFile/issues"
+  },
+  "homepage": "https://github.com/siwepieterson/nodeFile#readme"
+}

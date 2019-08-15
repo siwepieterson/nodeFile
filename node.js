@@ -4,72 +4,72 @@ var count = 0
 
 class Visitor {
 
-   constructor ( firstName, secondName, dateOfVisit, timeOfVisit, nameOfAssistant, comments ){
+    constructor(firstName, secondName, dateOfVisit, timeOfVisit, nameOfAssistant, comments) {
 
-       this.fullname = firstName + " " + secondName;
+        this.fullname = firstName + " " + secondName;
 
-       this.dateOfVisit = dateOfVisit;
+        this.dateOfVisit = dateOfVisit;
 
-       this.timeOfVisit = timeOfVisit;
+        this.timeOfVisit = timeOfVisit;
 
-       this.nameOfAssistant = nameOfAssistant;
+        this.nameOfAssistant = nameOfAssistant;
 
-       this.comments = comments;
+        this.comments = comments;
 
-       this.count = 0;
+        this.count = 0;
 
-   }
+    }
 
-   get() {
-       console.log(this.fullname);
-   }
+    get() {
+        console.log(this.fullname);
+    }
 
     increaseCount() {
-       count += 1;
-   }
+        count += 1;
+    }
 
-   getCount() {
-       console.log(count);
-       return count;
-   }
+    getCount() {
+        console.log(count);
+        return count;
+    }
 
-   save() {
+    save() {
 
-       this.increaseCount();
+        this.increaseCount();
 
-       this.getCount();
+        this.getCount();
 
-       var path = "visitor_" + count + ".json";
+        var path = "visitor_" + count + ".json";
 
-       var data = "Fullname: " + this.fullname + " Date of Visit: " + this.dateOfVisit + " Time of Visit: " + this.timeOfVisit + " Comment " + this.comments + " Assisstant " + this.nameOfAssistant + ".\n";
+        var data = "Fullname: " + this.fullname + " Date of Visit: " + this.dateOfVisit + " Time of Visit: " + this.timeOfVisit + " Comment " + this.comments + " Assisstant " + this.nameOfAssistant + ".\n";
+        var data = JSON.stringify(data);
+        fs.writeFileSync(path, data)
 
-       fs.writeFileSync(path, data)
+        console.log(count);
 
-       console.log(count);
+    }
 
-   }
+    load(index) {
 
-   load(index) {
+        if (index <= 0) {
 
-       if(index <= 0) {
+            console.log("File doesn't exist");
 
-           console.log("File doesn't exist");
+        }
 
-       }
+        var path = "visitor_" + index;
+        var data = JSON.stringify(data);
+        var data = fs.readFileSync(path);
 
-       var path = "visitor_" + index;
+        console.log(data);
 
-       var data =  fs.readFileSync(path);
-
-       console.log(data);
-
-   }
+    }
 
 }
 
-var alice = new Visitor( "alice", "phillip", 23/08, 11, "okay alright", "thembi" );
+var alice = new Visitor("alice", "phillip", 23 / 08, 11, "okay alright", "thembi");
 
-var bob = new Visitor( "bob", "peter", 2/09, 5, "how can i assist you", "lisa");
+var bob = new Visitor("bob", "peter", 2 / 09, 5, "how can i assist you", "lisa");
 
 alice.get();
 
@@ -78,3 +78,5 @@ alice.save();
 bob.save();
 
 bob.get();
+
+module.exports = Visitor;
